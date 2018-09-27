@@ -87,11 +87,23 @@
     <Compile Include="F1_welcome.Designer.cs">
       <DependentUpon>F1_welcome.cs</DependentUpon>
     </Compile>
+    <Compile Include="New User\gittestform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="New User\gittestform.Designer.cs">
+      <DependentUpon>gittestform.cs</DependentUpon>
+    </Compile>
     <Compile Include="New User\newuserhome.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="New User\newuserhome.Designer.cs">
       <DependentUpon>newuserhome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pinnemtestform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pinnemtestform.Designer.cs">
+      <DependentUpon>pinnemtestform.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -136,6 +148,12 @@
     </Compile>
     <Compile Include="userlogin.Designer.cs">
       <DependentUpon>userlogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="veruthe testForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="veruthe testForm2.Designer.cs">
+      <DependentUpon>veruthe testForm2.cs</DependentUpon>
     </Compile>
     <Compile Include="webschool_dbDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -200,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="userlogin.resx">
       <DependentUpon>userlogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="veruthe testForm2.resx">
+      <DependentUpon>veruthe testForm2.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
