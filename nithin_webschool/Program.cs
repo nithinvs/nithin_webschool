@@ -16,7 +16,7 @@ namespace nithin_webschool
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Admin.approve());
+            Application.Run(new adminpage());
         }
     }
 }

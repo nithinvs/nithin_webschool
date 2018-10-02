@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace nithin_webschool
 {
     public partial class adminpage : Form
     {
+        SqlConnection con = new SqlConnection("Data Source=DESKTOP-H0LS289\\SQLEXPRESS;Initial Catalog=webschool_db;Integrated Security=True");
+        SqlCommand cmd = new SqlCommand();
+
         public adminpage()
         {
             InitializeComponent();
@@ -26,6 +30,20 @@ namespace nithin_webschool
         {
        
             Admin.approve ob = new Admin.approve();
+            this.Hide();
+            ob.Show();
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Admin.viewstudents ob = new Admin.viewstudents();
+            this.Hide();
+            ob.Show();
+        }
+
+        private void linkLabel6_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Admin.viewstudents ob = new Admin.viewstudents();
             this.Hide();
             ob.Show();
         }

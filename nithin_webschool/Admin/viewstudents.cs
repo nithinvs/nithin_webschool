@@ -9,38 +9,42 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-namespace nithin_webschool.Student
+namespace nithin_webschool.Admin
 {
-    public partial class studenthome : Form
+    public partial class viewstudents : Form
     {
-        //string name1;
-        int rid;
-        
-        string s;
         SqlConnection con = new SqlConnection("Data Source=DESKTOP-H0LS289\\SQLEXPRESS;Initial Catalog=webschool_db;Integrated Security=True");
         SqlCommand cmd = new SqlCommand();
-        public studenthome()
+        public viewstudents()
         {
             InitializeComponent();
         }
-        public studenthome(string name, string id)
+        int id;
+        string s;
+        public void Fillgrid()
         {
-            InitializeComponent();
-            label2.Text = name;
-            rid = Convert.ToInt32(id);
-
+            con.Open();
+            cmd.Connection = con;
+            cmd.CommandText = "select * from tbl_reg where status=1";
+            cmd.CommandType = CommandType.Text;
+            SqlDataAdapter ada = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            ada.Fill(dt);
+            dataGridView1.DataSource = dt;
+            con.Close();
+            dataGridView1.Visible = true;
         }
-        public void Getdata()
+        public void Showdata()
         {
             DateTime dt;
             con.Open();
             cmd.Connection = con;
-            cmd.CommandText = "select name, email, address, gender, dob, phone, batch from tbl_reg where rid=@rid";
+            cmd.CommandText = "select name, email, address, gender, dob, phone, batch from tbl_reg where rid=@id";
             cmd.CommandType = CommandType.Text;
-            cmd.Parameters.AddWithValue("@rid", rid);
+            cmd.Parameters.AddWithValue("@id", id);
             SqlDataReader rd = cmd.ExecuteReader();
             cmd.Parameters.Clear();
-            if(rd.Read())
+            if (rd.Read())
             {
                 lbl_name.Text = rd[0].ToString();
                 lbl_email.Text = rd[1].ToString();
@@ -60,41 +64,25 @@ namespace nithin_webschool.Student
             }
             con.Close();
             panel1.Visible = true;
-
-        }
-        
-        
-
-        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            F1_welcome ob = new F1_welcome();
-            this.Hide();
-            ob.Show();
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            F1_welcome ob = new F1_welcome();
-            this.Hide();
-            ob.Show();
-               
-        }
-
-        private void studenthome_Load(object sender, EventArgs e)
+        private void viewstudents_Load(object sender, EventArgs e)
         {
             panel1.Visible = false;
+            dataGridView1.Visible = false;
+            Fillgrid();
         }
 
-        private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            Getdata();
+            id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+            Showdata();
+
         }
 
-        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-            addfeedback ob = new addfeedback();
-            this.Hide();
-            ob.Show();
+            panel1.Visible = false;
         }
     }
 }

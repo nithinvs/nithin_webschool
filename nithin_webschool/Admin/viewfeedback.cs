@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace nithin_webschool
+namespace nithin_webschool.Admin
 {
-    public partial class veruthe_testForm2 : Form
+    public partial class viewfeedback : Form
     {
-        public veruthe_testForm2()
+        public viewfeedback()
         {
             InitializeComponent();
         }
